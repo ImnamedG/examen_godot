@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://clka7uohxu5wr"]
+
+[ext_resource type="Script" uid="uid://c4jyulfsgbnct" path="res://character_body_2d.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="2_i3pqv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
+size = Vector2(115, 121)
+
+[node name="Node2D" type="Node2D" unique_id=1934030995]
+
+[node name="player" type="CharacterBody2D" parent="." unique_id=670620897]
+script = ExtResource("1_onrkg")
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=1960186549]
+
+[node name="Sprite2D" type="Sprite2D" parent="player" unique_id=245832930]
+texture = ExtResource("2_i3pqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=247888442]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_hqtel")
+
+[node name="Timer" type="Timer" parent="." unique_id=223829183]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="player" method="_on_timer_timeout"]
